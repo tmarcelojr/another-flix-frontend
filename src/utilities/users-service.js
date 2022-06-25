@@ -19,6 +19,17 @@ export const login = async credentials => {
     }
 }
 
+export const signUp = async newUser => {
+    try {
+        const token = await axios.post(BASE_URL, newUser)
+        localStorage.setItem('token', token.data)
+
+        return getUser()
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 export const getToken = () => {
     // Use property/key/field name to grab our token
     const token = localStorage.getItem('token')
