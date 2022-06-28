@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { signUp } from '../../utilities/users-service'
 import { useNavigate } from 'react-router-dom'
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
     const [newUser, setNewUser] = useState({
         firstName: '',
         lastName:'',
@@ -27,9 +27,10 @@ const SignUp = () => {
     const handleSubmit = async e => {
         e.preventDefault()
         try {
-            const res = await signUp(newUser)
-            console.log(res)
-            if(res) navigate('/movies')
+            const user = await signUp(newUser)
+            // console.log(user)
+            setUser(user)
+            if(user) navigate('/movies')
         } catch (e) {
             console.log(e)
         }

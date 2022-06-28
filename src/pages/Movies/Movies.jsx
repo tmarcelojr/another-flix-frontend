@@ -21,6 +21,7 @@ const Movies = () => {
         // IIFE - Immediately Invoked Function Expression
         // ()(), we can put an anonymous function inside the first set of parenthesis and the second set of parenthesis will immediately invoke that function
         (async () => {
+            console.log('are we reaching here')
             const moviesRes = await getMovies()
             setMovies(moviesRes.data)
         })()
